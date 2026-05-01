@@ -1,0 +1,71 @@
+﻿@model IEnumerable<booksXrelaysSomaShare.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<h1>Transactions</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Offer ID</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @item.OfferId
+            </td>
+
+            <td>
+                @item.TransactionDate
+            </td>
+
+            <td>
+                @if (item.IsCompleted)
+                {
+                    <span class="text-success">Completed</span>
+                }
+                else
+                {
+                    <span class="text-warning">Pending</span>
+                }
+            </td>
+
+            <td>
+                <a asp-action="Complete"
+                   asp-route-id="@item.TransactionId"
+                   class="btn btn-success btn-sm">
+                    Complete
+                </a>
+
+                <a asp-action="Edit"
+                   asp-route-id="@item.TransactionId">
+                    Edit
+                </a> |
+
+                <a asp-action="Details"
+                   asp-route-id="@item.TransactionId">
+                    Details
+                </a> |
+
+                <a asp-action="Delete"
+                   asp-route-id="@item.TransactionId">
+                    Delete
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

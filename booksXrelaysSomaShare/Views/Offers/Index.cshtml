@@ -1,0 +1,58 @@
+﻿@model IEnumerable<booksXrelaysSomaShare.Models.Offer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>SomaShare Offers List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OfferPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TextbookId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAccepted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfferPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TextbookId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAccepted)
+            </td>
+
+            <td>
+                <a asp-action="Accept" asp-route-id="@item.OfferId" class="btn btn-success btn-sm"> Accept </a>
+
+                <a asp-action="Reject" asp-route-id="@item.OfferId" class="btn btn-danger btn-sm"> Reject </a>
+
+                <a asp-action="Edit" asp-route-id="@item.OfferId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OfferId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OfferId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
