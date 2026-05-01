@@ -91,3 +91,5 @@ using (var scope = app.Services.CreateScope())
 
 
 app.Run();
+
+//Created roles (Admin, Seller, Buyer) and assigned roles to users
