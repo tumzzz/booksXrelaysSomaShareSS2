@@ -18,3 +18,5 @@ namespace booksXrelaysSomaShare.Data
         public DbSet<Review> Reviews { get; set; }
     }
 }
+
+//Added ApplicationDbContext and managed database connection
